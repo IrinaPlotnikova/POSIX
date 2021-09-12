@@ -33,6 +33,9 @@ public class Main {
         else if (args[1].equals("echo")){
             command = new EchoCommand();
         }
+        else if (args[1].equals("cat")){
+            command = new CatCommand();
+        }
         else{
             System.err.println("Ошибка: неизвестная команда " + args[1]);
         }
