@@ -8,6 +8,9 @@ public class Main {
         new LsCommand().help();
         System.out.println();
         System.out.println();
+        new MkdirCommand().help();
+        System.out.println();
+        System.out.println();
     }
 
     //@param args[0] директория для работы
@@ -21,6 +24,9 @@ public class Main {
 
         if (args[1].equals("ls")){
             command = new LsCommand();
+        }
+        else if (args[1].equals("mkdir")){
+            command = new MkdirCommand();
         }
         else{
             System.err.println("Ошибка: неизвестная команда " + args[1]);
