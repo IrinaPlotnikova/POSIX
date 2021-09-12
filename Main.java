@@ -11,9 +11,11 @@ public class Main {
         new MkdirCommand().help();
         System.out.println();
         System.out.println();
+        new EchoCommand().help();
     }
 
     //@param args[0] директория для работы
+    //@param args[1] команда (опуионально)
     public static void main(String[] args) {
         if (args.length <= 1){
             printHelp();
@@ -27,6 +29,9 @@ public class Main {
         }
         else if (args[1].equals("mkdir")){
             command = new MkdirCommand();
+        }
+        else if (args[1].equals("echo")){
+            command = new EchoCommand();
         }
         else{
             System.err.println("Ошибка: неизвестная команда " + args[1]);
