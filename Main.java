@@ -12,10 +12,15 @@ public class Main {
         System.out.println();
         System.out.println();
         new EchoCommand().help();
+        System.out.println();
+        System.out.println();
+        new CatCommand().help();
+        System.out.println();
+        System.out.println();
     }
 
     //@param args[0] директория для работы
-    //@param args[1] команда (опуионально)
+    //@param args[1] команда (опционально)
     public static void main(String[] args) {
         if (args.length <= 1){
             printHelp();
@@ -24,21 +29,14 @@ public class Main {
 
         POSIXCommand command = null; // класс выполняемой команды
 
-        if (args[1].equals("ls")){
-            command = new LsCommand();
+        switch (args[1]) {
+            case "ls" -> command = new LsCommand();
+            case "mkdir" -> command = new MkdirCommand();
+            case "echo" -> command = new EchoCommand();
+            case "cat" -> command = new CatCommand();
+            default -> System.err.println("Ошибка: неизвестная команда " + args[1]);
         }
-        else if (args[1].equals("mkdir")){
-            command = new MkdirCommand();
-        }
-        else if (args[1].equals("echo")){
-            command = new EchoCommand();
-        }
-        else if (args[1].equals("cat")){
-            command = new CatCommand();
-        }
-        else{
-            System.err.println("Ошибка: неизвестная команда " + args[1]);
-        }
+
         if (command != null){
             String[] allParams = Arrays.copyOfRange(args, 2, args.length);
 
